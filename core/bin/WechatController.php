@@ -20,6 +20,12 @@ class WechatController extends Controller{
 
     const queryBatchUser = 'https://api.weixin.qq.com/cgi-bin/user/info/batchget?access_token=%s';
 
+    protected $msg_signature;
+
+    protected $timestamp;
+
+    protected $nonce;
+
     /**
      * 获取 基础支持 access_token
      * @param null $appId
@@ -115,12 +121,12 @@ class WechatController extends Controller{
     public function check()
     {
         $echoStr = Input::get('echostr');
-        $signature = Input::get('signature');
-        $timestamp =  Input::get('timestamp');
-        $nonce =  Input::get('nonce');
+        $this->signature = Input::get('signature');
+        $this->timestamp =  Input::get('timestamp');
+        $this->nonce =  Input::get('nonce');
         //取token
         $token = config('TOKEN');
-        $tmpArr = array($token, $timestamp, $nonce);
+        $tmpArr = array($token, $this->timestamp, $this->nonce);
         //字典排序
         sort($tmpArr, SORT_STRING);
         //转字符串
@@ -128,7 +134,7 @@ class WechatController extends Controller{
         //sha1加密
         $tmpStr = sha1( $tmpStr );
         //签名验证
-        if( $tmpStr <> $signature )
+        if( $tmpStr <> $this->signature )
         {
             die('fail');
         }
