@@ -1,0 +1,1 @@
+<?php exit;?>001446656765cecead672fec20f89b9c581e27693b4ba:2:{s:11:"expire_time";i:1446656765;s:12:"access_token";s:117:"3MpqpiapWqgZ52Wku5_wKKChu_omM6onXj5uB3Hkr6-TDCPr52xb_AoZt8UZdQVOJ9zvdGk0eTV3zxcu2PVUWD_wXvAYQiDT-ItPIatAEZwAHBhAAAJQK";}
