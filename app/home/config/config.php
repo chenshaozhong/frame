@@ -61,7 +61,8 @@ return [
         'pic_weixin'=>'pic_weixin',
         'location_select'=>'location_select',//弹出地理位置选择器的事件推送
         'shakearoundusershake'=>'shakearoundusershake',
-        'wificonnected'=>'wificonnected'
+        'wificonnected'=>'wificonnected',
+        'user_scan_product'=>'user_scan_product',
     ],
 
 
