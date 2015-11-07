@@ -47,7 +47,18 @@ class WechatController extends Controller{
     {
         $token = $this->getToken();
         $api = "\\core\\lib\\Wechat\\{$apiAction}";
+
+        if( !class_exists($apiAction) ) {
+            throw new \Exception("API '{$apiAction}' not found", 404);
+        }
+
         $apiObj = new $api($token);
+
+        if( !method_exists($apiObj, $apiMethod) ){
+            self::show_404();
+            throw new \Exception("API METHOD '{$apiAction}::{$apiMethod}()' not found", 404);
+        }
+
         return call_user_func_array(array($apiObj , $apiMethod) , $param);
     }
 
