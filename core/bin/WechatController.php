@@ -39,6 +39,19 @@ class WechatController extends Controller{
     }
 
     /**
+     * 调取API
+     * @param $apiAction
+     * @param $apiMethod
+     */
+    public function callApi($apiAction , $apiMethod , $param = array())
+    {
+        $token = $this->getToken();
+        $api = "\\core\\lib\\Wechat\\{$apiAction}";
+        $apiObj = new $api($token);
+        return call_user_func_array(array($apiObj , $apiMethod) , $param);
+    }
+
+    /**
      * oauth 授权
      * @param string $scope
      * @param string $state

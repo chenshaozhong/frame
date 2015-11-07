@@ -15,7 +15,7 @@ class IndexController extends WechatController{
 
     public function index()
     {
-
+        echo 'Hi!welcome to use conist frame';
     }
 
 }
