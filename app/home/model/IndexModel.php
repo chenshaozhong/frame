@@ -11,4 +11,9 @@ defined('ENVIRONMENT') OR exit('No direct script access allowed');
 class IndexModel extends Model
 {
 
+    public function get()
+    {
+        return  'Hi!welcome to use conist frame';
+    }
+
 }
