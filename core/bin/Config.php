@@ -59,7 +59,7 @@ class Config{
                     'CACHE_TYPE' => 'FileCache',
                     'CACHE_PATH' => ROOT_PATH.'app'.DIRECTORY_SEPARATOR.'common'. DIRECTORY_SEPARATOR . 'cache'.DIRECTORY_SEPARATOR,
                     'GROUP' => 'runtime',
-                    'HASH_DEEP' => 0,
+                    'HASH_DEEP' => 3,
                 ],
             ],
         ];

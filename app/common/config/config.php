@@ -1,7 +1,7 @@
 <?php
 return array(
 
-    'AUTO_SESSION'=>true,
+    'AUTO_SESSION'=>false,//是否全局打开session
 
     'DB_LINK'=>[
         'default'=>[
@@ -13,7 +13,7 @@ return array(
             'DB_NAME' => 'test',
             'DB_CHARSET' => 'utf8',
             'DB_PREFIX' => 'wx_',
-            'DB_CACHE' => 'DB_CACHE',
+            'DB_CACHE' => 'db',
             'DB_SLAVE' => array(),
         ]
     ],
