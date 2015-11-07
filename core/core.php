@@ -176,4 +176,4 @@ spl_autoload_register(function($class){
     return false;
 });
 
-Application::go();
+Application::ready()->go();

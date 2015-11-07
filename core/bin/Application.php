@@ -24,7 +24,7 @@ class Application{
 
         if( !defined('CONTROLLER_NAME') ) define('CONTROLLER_NAME', $controller_name);
         if( !defined('ACTION_NAME') ) define('ACTION_NAME', $action_name);
-
+        return new self();
     }
 
     /**
@@ -34,7 +34,6 @@ class Application{
     {
         try{
             define('APP_START_TIME', microtime());
-            self::ready();
             //execute action
             $controller = '\app\\'. APP_NAME .'\controller\\'. CONTROLLER_NAME.'Controller';
             $action = ACTION_NAME;
