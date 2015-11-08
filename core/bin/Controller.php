@@ -36,7 +36,7 @@ class Controller{
     public function display($tpl = '')
     {
 
-        $tpl = $tpl ? : ACTION_NAME;
+        $tpl = $tpl ? : CONTROLLER_NAME.DIRECTORY_SEPARATOR.ACTION_NAME;
 
         $tpl = str_replace(':', DIRECTORY_SEPARATOR , $tpl);
 
