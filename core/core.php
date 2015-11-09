@@ -44,6 +44,16 @@ use core\bin\Input;
 use core\bin\Logger;
 
 /**
+ * @param $level
+ * @param $message
+ * @return mixed
+ */
+function logger($level , $message)
+{
+    return logger::$level($message);
+}
+
+/**
  * @param null $key
  * @param null $value
  */
@@ -57,7 +67,7 @@ function config($key = NULL, $value = NULL)
  * @param $method
  * @param array $param
  */
-function url($action , $method = 'index' , $param = [])
+function url($action = NULL , $method = 'index' , $param = [])
 {
     $url = 'http';
     $uri = '';
@@ -79,13 +89,16 @@ function url($action , $method = 'index' , $param = [])
         $uri = $_SERVER['PHP_SELF'];
     }
 
+    if(is_null($action))
+    {
+        return trim(dirname($url.$uri),'/').'/';
+    }
+
     $param['c'] = $action;
     $param['m'] = $method;
 
     return $url.$uri.'?'.http_build_query($param);
 }
-
-
 
 /**
  * 对象调用函数
