@@ -1,0 +1,1 @@
+<?php/** * Effect: 微信支付接口 * FileName: WxPay.php * Created by PhpStorm * Author: Charon <chensz@adsit.cn> * Date: 2015/11/9 * Time: 15:30 */ class WxPay{ }
