@@ -139,6 +139,21 @@ function loadFunc($func = 'func' , $layer = APP_NAME)
     return false;
 }
 
+
+function inc($tpl)
+{
+    if(strpos($tpl , ':') === false)
+    {
+        $tpl = CONTROLLER_NAME.DIRECTORY_SEPARATOR.$tpl;
+    }
+    $tpl = str_replace(':', DIRECTORY_SEPARATOR , $tpl);
+    $tplFile = config('TPL_PATH') . $tpl . '.php';
+    if(file_exists($tplFile))
+    {
+        include($tplFile);
+    }
+}
+
 /**
  * 自动注册类
  */
