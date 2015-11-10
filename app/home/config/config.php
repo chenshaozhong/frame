@@ -15,6 +15,16 @@ return [
             'GROUP' => 'runtime',
             'HASH_DEEP' => 0,
         ],
+        'redis' =>[
+            'CACHE_TYPE' => 'Redis',
+            'SERVER' => '127.0.0.1',
+            'PORT' => 6379,
+            'GROUP' => 'onRedis'
+        ],
+        'apc' =>[
+            'CACHE_TYPE' => 'Apc',
+            'GROUP' => 'onApc'
+        ],
     ],
 
     'WECHAT_APPID'=>'wx9467b53e5422b8dd',//微信appId
