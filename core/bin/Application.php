@@ -19,8 +19,10 @@ class Application{
 
         Config::get('AUTO_SESSION') && session_start();;
 
-        $controller_name = empty(Input::get('c')) ? Config::get('DEFAULT_CONTROLLER') : Input::get('c');
-        $action_name = empty(Input::get('m')) ? Config::get('DEFAULT_ACTION') : Input::get('m');
+        $c = Input::get('c');
+        $m = Input::get('m');
+        $controller_name = empty($c) ? Config::get('DEFAULT_CONTROLLER') : $c;
+        $action_name = empty($m) ? Config::get('DEFAULT_ACTION') : $m;
 
         if( !defined('CONTROLLER_NAME') ) define('CONTROLLER_NAME', $controller_name);
         if( !defined('ACTION_NAME') ) define('ACTION_NAME', $action_name);
