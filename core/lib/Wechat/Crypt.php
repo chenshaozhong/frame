@@ -168,7 +168,7 @@ class Crypt{
             $random = $this->getRandomStr();
             $text = $random . pack("N", strlen($text)) . $text . $appid;
             // 网络字节序
-            $size = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
+            //$size = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
             $module = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
             $iv = substr($this->key, 0, 16);
             //使用自定义的填充方式对明文进行补位填充
@@ -182,7 +182,7 @@ class Crypt{
             //print(base64_encode($encrypted));
             //使用BASE64对加密后的字符串进行编码
             return array(self::$OK, base64_encode($encrypted));
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             //print $e;
             return array(self::$EncryptAESError, null);
         }
@@ -208,7 +208,7 @@ class Crypt{
             $decrypted = mdecrypt_generic($module, $ciphertext_dec);
             mcrypt_generic_deinit($module);
             mcrypt_module_close($module);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return array(self::$DecryptAESError, null);
         }
 
@@ -224,7 +224,7 @@ class Crypt{
             $xml_len = $len_list[1];
             $xml_content = substr($content, 4, $xml_len);
             $from_appid = substr($content, $xml_len + 4);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             //print $e;
             return array(self::$IllegalBuffer, null);
         }
@@ -263,7 +263,7 @@ class Crypt{
         //计算需要填充的位数
         $amount_to_pad = self::$block_size - ($text_length % self::$block_size);
         if ($amount_to_pad == 0) {
-            $amount_to_pad = self::block_size;
+            $amount_to_pad = self::$block_size;
         }
         //获得补位所用的字符
         $pad_chr = chr($amount_to_pad);
@@ -299,14 +299,14 @@ class Crypt{
     public function extract($xmltext)
     {
         try {
-            $xml = new DOMDocument();
+            $xml = new \DOMDocument();
             $xml->loadXML($xmltext);
             $array_e = $xml->getElementsByTagName('Encrypt');
             $array_a = $xml->getElementsByTagName('ToUserName');
             $encrypt = $array_e->item(0)->nodeValue;
             $tousername = $array_a->item(0)->nodeValue;
             return array(0, $encrypt, $tousername);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             //print $e . "\n";
             return array(self::$ParseXmlError, null, null);
         }
@@ -347,7 +347,7 @@ class Crypt{
             sort($array, SORT_STRING);
             $str = implode($array);
             return array(self::$OK, sha1($str));
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             //print $e . "\n";
             return array(self::$ComputeSignatureError, null);
         }
