@@ -14,6 +14,8 @@ class EventController extends WechatController{
 
 
     protected $msg_signature;
+    protected $timestamp;
+    protected $nonce;
 
     public function __construct()
     {
@@ -29,8 +31,10 @@ class EventController extends WechatController{
         if(config('SafeMode') == 2)
         {
             $this->msg_signature = $this->get('msg_signature');
+            $this->timestamp = $this->get('timestamp');
+            $this->nonce = $this->get('nonce');
             //安全模式
-            $crypt = \core\lib\Wechat\Crypt(config('TOKEN') , config('EncodingAesKey') , config('WECHAT_APPID'));
+            $crypt = new \core\lib\Wechat\Crypt(config('TOKEN') , config('EncodingAesKey') , config('WECHAT_APPID'));
             $errCode = $crypt->decryptMsg($this->msg_signature , $this->timestamp , $this->nonce , $xml , $msg);
             if($errCode <> 0)
             {

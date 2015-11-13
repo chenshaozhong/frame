@@ -1,6 +1,7 @@
 <?php
 namespace app\home\controller;
 use core\bin\WechatController;
+
 defined('ENVIRONMENT') OR exit('No direct script access allowed');
 /**
  * Created by PhpStorm.
