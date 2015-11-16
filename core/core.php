@@ -69,6 +69,12 @@ function config($key = NULL, $value = NULL)
  */
 function url($action = NULL , $method = 'index' , $param = [])
 {
+
+    if(config('AUTO_ROUTER'))
+    {
+        return \core\bin\Router::url($action , $method , $param);
+    }
+
     $url = 'http';
     $uri = '';
     if (isset($_SERVER['HTTPS']) &&  $_SERVER["HTTPS"] == "on")
