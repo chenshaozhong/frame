@@ -16,7 +16,10 @@ class IndexController extends WechatController{
 
     public function index()
     {
-        echo load('Index')->get();
+        $jsSdk = new \core\lib\Wechat\Jssdk();
+        $js = $jsSdk->jsApi();
+        $this->assign('js' , $js);
+        $this->display();
     }
 
 }

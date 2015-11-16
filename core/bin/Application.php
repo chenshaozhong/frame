@@ -16,11 +16,16 @@ class Application{
     public static function ready()
     {
         date_default_timezone_set(config('TIMEZONE'));
-
         Config::get('AUTO_SESSION') && session_start();;
 
         $c = Input::get('c');
         $m = Input::get('m');
+
+        if(config('AUTO_ROUTER'))
+        {
+            \core\bin\Router::run($c , $m);
+        }
+
         $controller_name = empty($c) ? Config::get('DEFAULT_CONTROLLER') : $c;
         $action_name = empty($m) ? Config::get('DEFAULT_ACTION') : $m;
 
