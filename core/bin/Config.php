@@ -21,6 +21,11 @@ class Config{
             'LOG_PATH' =>  APP_PATH.'logs'.DIRECTORY_SEPARATOR,
             'TIMEZONE' => 'PRC',
             'AUTO_SESSION'=>false,//打开session
+
+            'SESSION'=>array(
+                'sess_expiration'=>60*60*24*365,
+            ),
+
 			'DEFAULT_CONTROLLER' => 'Index',
 			'DEFAULT_ACTION' => 'index',
             'WECHAT_APPID'=>'',//微信appId
